@@ -54,8 +54,29 @@ $('rnext').onclick=()=>go(1);$('rprev').onclick=()=>go(-1);
 let tx=0;$('reader').addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
 $('reader').addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50){go(d<0?1:-1);e.preventDefault()}});
 $('rnext').addEventListener('click',e=>e.stopPropagation());$('rprev').addEventListener('click',e=>e.stopPropagation());
-$('next1').onclick=()=>{show('s3');let i=0;const t=setInterval(()=>{$('typed').textContent=LETTER.slice(0,++i);if(i>=LETTER.length){clearInterval(t);$('sign').textContent=SIGN;$('next2').classList.remove('hidden')}},35)};
+document.body.classList.add('lock');
+$('open').onclick=()=>{
+  if(window.gsap){
+    gsap.to('.cmid',{opacity:0,duration:.4});
+    gsap.to('.cl',{xPercent:-100,duration:1.6,ease:'power3.inOut'});
+    gsap.to('.cr',{xPercent:100,duration:1.6,ease:'power3.inOut',onComplete:()=>{$('curtain').remove();document.body.classList.remove('lock')}});
+    gsap.from('#s1 .wrap > *',{y:30,opacity:0,duration:1,stagger:.15,delay:.9,ease:'power3.out'});
+  }else{$('curtain').remove();document.body.classList.remove('lock')}
+};
+$('next1').onclick=()=>show('s3');
+function openLetter(){
+  const env=$('env');if(env.dataset.done)return;env.dataset.done=1;
+  const go=()=>{env.remove();$('letter').classList.remove('hidden');
+    if(window.gsap)gsap.from('#letter',{y:40,opacity:0,duration:.9,ease:'power2.out'});
+    let i=0;const t=setInterval(()=>{$('typed').textContent=LETTER.slice(0,++i);if(i>=LETTER.length){clearInterval(t);$('sign').textContent=SIGN;$('next2').classList.remove('hidden')}},32)};
+  if(window.gsap){
+    gsap.to('.flap',{rotateX:180,duration:.7,ease:'power2.inOut'});
+    gsap.to('.seal,.etxt',{opacity:0,duration:.3});
+    gsap.to(env,{y:-30,opacity:0,duration:.6,delay:.8,onComplete:go});
+  }else go();
+}
+$('env').onclick=openLetter;
+$('env').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openLetter()}};
 $('next2').onclick=()=>{show('s4');burst(260);sparks(26)};
 $('again').onclick=()=>{burst(260);sparks(26)};
 
-if(window.gsap){gsap.from('#s1 .wrap > *',{y:30,opacity:0,duration:1,stagger:.15,ease:'power3.out'})}
