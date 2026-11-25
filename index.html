@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>عيد ميلاد سعيد يا بيبا 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:'Cairo',sans-serif;background:linear-gradient(160deg,#fff1e6,#ffd6e0 55%,#e8d5ff);min-height:100vh;color:#5a2a47;overflow-x:hidden}
+section{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 18px;text-align:center;position:relative}
+h1{font-size:2.1rem;font-weight:900;margin-bottom:8px}
+h2{font-size:1.6rem;font-weight:900;margin-bottom:18px}
+p.sub{opacity:.8;margin-bottom:22px}
+.btn{background:#e6447a;color:#fff;border:0;border-radius:40px;padding:13px 30px;font:700 1.05rem Cairo;cursor:pointer;box-shadow:0 8px 22px #e6447a55;transition:.2s}
+.btn:active{transform:scale(.95)}
+/* cake */
+.cake{position:relative;width:240px;height:230px;margin:30px auto 10px}
+.plate{position:absolute;bottom:0;left:-20px;right:-20px;height:16px;background:#fff;border-radius:50%;box-shadow:0 6px 14px #0002}
+.tier{position:absolute;left:50%;transform:translateX(-50%);border-radius:14px 14px 8px 8px}
+.t1{bottom:10px;width:240px;height:80px;background:#ff9ebb}
+.t2{bottom:90px;width:180px;height:70px;background:#ffc2d4}
+.tier:before{content:"";position:absolute;top:0;left:0;right:0;height:22px;background:#fff;border-radius:14px 14px 40% 40%/14px 14px 100% 100%}
+.candles{position:absolute;bottom:158px;left:50%;transform:translateX(-50%);display:flex;gap:22px}
+.candle{width:12px;height:46px;background:repeating-linear-gradient(45deg,#7bdff2 0 6px,#fff 6px 12px);border-radius:3px;position:relative}
+.flame{position:absolute;top:-24px;left:50%;width:14px;height:24px;margin-left:-7px;background:radial-gradient(#fff 15%,#ffd24a 45%,#ff8a00);border-radius:50% 50% 50% 50%/60% 60% 40% 40%;animation:fl .25s infinite alternate;transform-origin:bottom;transition:.4s}
+.out .flame{opacity:0;transform:scale(0)}
+@keyframes fl{to{transform:scale(1.12,.92) rotate(3deg)}}
+#hint{min-height:28px;font-weight:700}
+/* reveal sections */
+.hidden{display:none}
+.fade{animation:up .8s both}
+@keyframes up{from{opacity:0;transform:translateY(30px)}}
+/* envelopes */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;width:100%;max-width:440px}
+.env{background:#fff;border-radius:18px;padding:18px 10px;box-shadow:0 8px 20px #b0488a22;cursor:pointer;font-weight:700;min-height:96px;display:flex;align-items:center;justify-content:center;transition:.3s}
+.env .em{font-size:2rem;display:block}
+.env.open{background:#e6447a;color:#fff;font-size:.98rem;line-height:1.7}
+/* letter */
+.letter{background:#fffaf3;max-width:440px;border-radius:12px;padding:28px 24px;line-height:2;box-shadow:0 12px 30px #0002;text-align:right;border-top:6px solid #e6447a;min-height:200px}
+.sign{margin-top:14px;font-weight:900;color:#e6447a}
+/* wish counter */
+.age{font-size:4.5rem;font-weight:900;color:#e6447a}
+canvas#c{position:fixed;inset:0;pointer-events:none;z-index:50}
+.float{position:fixed;bottom:-30px;font-size:1.6rem;animation:rise linear forwards;pointer-events:none;z-index:40}
+@keyframes rise{to{transform:translateY(-110vh) rotate(40deg);opacity:0}}
+.count{display:flex;gap:10px;justify-content:center;margin-top:10px}
+.count div{background:#fff;border-radius:14px;padding:10px 12px;min-width:64px;box-shadow:0 6px 16px #b0488a22;font-size:.8rem}
+.count b{display:block;font-size:1.5rem;color:#e6447a}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+
+<section id="s1">
+  <h1>يوم 23 فبراير 🎂</h1>
+  <p class="sub">في كيكة مستنياكي.. عايز أشوف أمنيتك</p>
+  <div class="cake" id="cake">
+    <div class="candles"><div class="candle"><div class="flame"></div></div><div class="candle"><div class="flame"></div></div><div class="candle"><div class="flame"></div></div></div>
+    <div class="tier t2"></div><div class="tier t1"></div><div class="plate"></div>
+  </div>
+  <p id="hint">اتمني أمنية ✨ وبعدين دوسي على الشمع عشان تطفيه</p>
+  <div class="count" id="cd"></div>
+</section>
+
+<section id="s2" class="hidden">
+  <h2>افتحي المظاريف 💌</h2>
+  <p class="sub">كل مظروف فيه سبب إنك أحلى حاجة في حياتي</p>
+  <div class="grid" id="grid"></div>
+  <button class="btn hidden" id="next1" style="margin-top:26px">كمّلي ⬇️</button>
+</section>
+
+<section id="s3" class="hidden">
+  <h2>رسالة ليكي 💗</h2>
+  <div class="letter"><span id="typed"></span><div class="sign" id="sign"></div></div>
+  <button class="btn hidden" id="next2" style="margin-top:26px">الهدية الأخيرة 🎁</button>
+</section>
+
+<section id="s4" class="hidden">
+  <h2>كل سنة وانتي طيبة يا قلبي</h2>
+  <div class="age">🎉</div>
+  <p class="sub" style="margin-top:14px;font-size:1.2rem;font-weight:700">عقبال ألف سنة وأنا جنبك ❤️</p>
+  <button class="btn" id="again">نفرح تاني 🎈</button>
+  <p class="sub" style="margin-top:40px;font-size:.85rem">💕 CREATED BY MIDO 💕</p>
+</section>
+
+<script>
+// ===== عدّلي النصوص هنا =====
+const REASONS=[
+ ["😊","ضحكتك بتظبط يومي كله"],
+ ["🤗","جنبك بحس إني في بيتي"],
+ ["💪","بتسنديني وقت ما بتعب"],
+ ["🌸","طيبة قلبك بتبان في كل حاجة"],
+ ["😂","نفس هزارنا اللي محدش بيفهمه"],
+ ["🌙","بفكر فيكي قبل ما أنام"]
+];
+const LETTER="يا بيبا، كل سنة بتعدي وانتي بتبقي أقرب لقلبي. مش محتاج مناسبة عشان أقولك بحبك، بس عيد ميلادك فرصة حلوة أقولها بصوت عالي. ربنا يخليكي ليا ويحقق كل أحلامك، وأنا هفضل جنبك في كل خطوة. كل سنة وانتي أحلى وأطيب وأقرب.";
+const SIGN="— ميدو ❤️";
+const TARGET_MONTH=1, TARGET_DAY=23; // فبراير = 1
+// =============================
+const $=id=>document.getElementById(id);
+const cv=$('c'),cx=cv.getContext('2d');let parts=[];
+function rs(){cv.width=innerWidth;cv.height=innerHeight}rs();addEventListener('resize',rs);
+function confetti(n=160){for(let i=0;i<n;i++)parts.push({x:innerWidth/2,y:innerHeight/2,vx:(Math.random()-.5)*16,vy:Math.random()*-16-2,g:.35,s:Math.random()*8+4,c:`hsl(${Math.random()*360},90%,60%)`,r:Math.random()*6})}
+(function loop(){cx.clearRect(0,0,cv.width,cv.height);parts=parts.filter(p=>p.y<cv.height+20);parts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=p.g;p.r+=.2;cx.fillStyle=p.c;cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillRect(-p.s/2,-p.s/4,p.s,p.s/2);cx.restore()});requestAnimationFrame(loop)})();
+function balloons(n=18){const e=['🎈','💖','🎀','✨','🌸'];for(let i=0;i<n;i++){const d=document.createElement('div');d.className='float';d.textContent=e[i%e.length];d.style.left=Math.random()*95+'vw';d.style.animationDuration=(4+Math.random()*4)+'s';d.style.animationDelay=Math.random()*2+'s';document.body.appendChild(d);setTimeout(()=>d.remove(),9000)}}
+function show(id){const s=$(id);s.classList.remove('hidden');s.classList.add('fade');setTimeout(()=>s.scrollIntoView({behavior:'smooth'}),50)}
+// countdown
+function cd(){const n=new Date();let t=new Date(n.getFullYear(),TARGET_MONTH,TARGET_DAY);if(t<new Date(n.getFullYear(),n.getMonth(),n.getDate()))t=new Date(n.getFullYear()+1,TARGET_MONTH,TARGET_DAY);const d=t-n;
+ if(n.getMonth()===TARGET_MONTH&&n.getDate()===TARGET_DAY){$('cd').innerHTML='<div><b>النهاردة!</b>عيد ميلادك 🎉</div>';return}
+ const D=Math.floor(d/864e5),H=Math.floor(d/36e5)%24,M=Math.floor(d/6e4)%60,S=Math.floor(d/1e3)%60;
+ $('cd').innerHTML=[[D,'يوم'],[H,'ساعة'],[M,'دقيقة'],[S,'ثانية']].map(x=>`<div><b>${x[0]}</b>${x[1]}</div>`).join('')}
+cd();setInterval(cd,1000);
+// candles
+let blown=false;
+$('cake').onclick=()=>{if(blown)return;blown=true;$('cake').classList.add('out');$('hint').textContent='يارب تتحقق 🥹✨';confetti(220);balloons();setTimeout(()=>show('s2'),1400)};
+// envelopes
+let opened=0;
+REASONS.forEach(r=>{const d=document.createElement('div');d.className='env';d.innerHTML=`<span class="em">${r[0]}</span>`;
+ d.onclick=()=>{if(d.classList.contains('open'))return;d.classList.add('open');d.textContent=r[1];confetti(30);if(++opened===REASONS.length)$('next1').classList.remove('hidden')};$('grid').appendChild(d)});
+$('next1').onclick=()=>{show('s3');let i=0;const t=setInterval(()=>{$('typed').textContent=LETTER.slice(0,++i);if(i>=LETTER.length){clearInterval(t);$('sign').textContent=SIGN;$('next2').classList.remove('hidden')}},35)};
+$('next2').onclick=()=>{show('s4');confetti(300);balloons(30)};
+$('again').onclick=()=>{confetti(300);balloons(30)};
+</script>
+</body>
+</html>
