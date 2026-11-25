@@ -2,75 +2,105 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>عيد ميلاد سعيد يا بيبا</title>
-<meta name="theme-color" content="#14111f">
 <meta name="description" content="عيد ميلاد سعيد يا بيبا">
+<meta name="theme-color" content="#14111f">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<div id="curtain" aria-label="ستارة"><div class="cp cl"></div><div class="cp cr"></div><div class="cmid"><div class="eyebrow">إلى بيبا</div><div class="cnum">٢١</div><button class="btn" id="open">افتحي الستارة</button></div></div>
-<nav><div class="brand">بيبا</div><div class="date">٢٣ فبراير</div></nav>
+<body class="lock">
 
-<section id="s1">
-  <div class="wrap">
-    <div class="eyebrow">HAPPY BIRTHDAY</div>
-    <h1>٢١ سنة <em>من النور</em><br>يا بيبا</h1>
-    <div class="rule"></div>
-    <p class="lead">عملتلك حاجة مخصوص. اتمني أمنية، وبعدين طفي الشمع.</p>
+<div id="intro" aria-hidden="true">
+  <canvas id="rain"></canvas>
+  <div class="count" id="count">٣</div>
+  <button class="skip" id="skip" type="button">تخطي</button>
+</div>
+
+<main id="app">
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">HAPPY BIRTHDAY</div>
+      <h1>٢١ سنة <em>من النور</em><br>يا بيبا</h1>
+      <div class="rule"></div>
+      <p class="lead">عملتلك تلات هدايا. دوسي على أي واحدة فيهم.</p>
+
+      <div class="gifts" id="gifts">
+        <button class="gift" data-g="letter" type="button">
+          <span class="gi">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="6" y="14" width="52" height="38" rx="4" fill="#f3e7d3"/><path d="M6 16l26 20 26-20" fill="none" stroke="#c9a96a" stroke-width="2"/><circle cx="32" cy="34" r="7" fill="#b3274a"/></svg>
+          </span>
+          <span class="gt">رسالة</span><span class="gs" data-s="letter">لسه متفتحتش</span>
+        </button>
+        <button class="gift" data-g="flowers" type="button">
+          <span class="gi">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><g fill="#e7a4b6"><ellipse cx="32" cy="14" rx="7" ry="11"/><ellipse cx="32" cy="14" rx="7" ry="11" transform="rotate(72 32 26)"/><ellipse cx="32" cy="14" rx="7" ry="11" transform="rotate(144 32 26)"/><ellipse cx="32" cy="14" rx="7" ry="11" transform="rotate(216 32 26)"/><ellipse cx="32" cy="14" rx="7" ry="11" transform="rotate(288 32 26)"/></g><circle cx="32" cy="26" r="6" fill="#d9b872"/><path d="M32 34v26" stroke="#6fae8a" stroke-width="3"/></svg>
+          </span>
+          <span class="gt">٢١ وردة</span><span class="gs" data-s="flowers">لسه متفتحتش</span>
+        </button>
+        <button class="gift" data-g="cake" type="button">
+          <span class="gi">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="36" width="44" height="18" rx="4" fill="#d98aa0"/><rect x="17" y="24" width="30" height="14" rx="4" fill="#f0b3c3"/><path d="M17 28q5 5 10 0t10 0 10 0" fill="none" stroke="#fbf4ea" stroke-width="3"/><rect x="30" y="12" width="4" height="12" fill="#f2dcaa"/><ellipse cx="32" cy="9" rx="3" ry="5" fill="#ffb84a"/></svg>
+          </span>
+          <span class="gt">تورتة</span><span class="gs" data-s="cake">لسه متفتحتش</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="finale hidden" id="finale">
+    <div class="wrap">
+      <div class="final-mark">٢١</div>
+      <div class="eyebrow" style="margin-top:6px">٢٣ فبراير</div>
+      <h2>كل سنة وانتي قلبي</h2>
+      <div class="rule"></div>
+      <p class="lead">واحد وعشرين سنة، وأنا لسه ممتن إني لقيتك.</p>
+      <button class="btn ghost" id="again" type="button">احتفلي تاني</button>
+    </div>
+  </section>
+
+  <footer>صُنع بحب بواسطة ميدو</footer>
+</main>
+
+<div class="dock" id="dock">
+  <button class="dbtn" id="dbtn" type="button" aria-label="شغّلي أغنية">♪ <span id="dlab">شغّلي أغنية</span></button>
+  <div class="dplayer hidden" id="dplayer"><div id="dframe"></div><button class="dstop" id="dstop" type="button" aria-label="إيقاف">&times;</button></div>
+</div>
+
+<div class="sheet hidden" id="sheet" role="dialog" aria-modal="true">
+  <button class="close" id="close" type="button" aria-label="إغلاق">&times;</button>
+
+  <div class="pane hidden" id="p-letter">
+    <div class="eyebrow">رسالة</div>
+    <h2>من ميدو</h2>
+    <div class="envelope" id="env" role="button" tabindex="0" aria-label="افتحي الرسالة">
+      <div class="body"></div><div class="flap"></div><div class="seal">م</div>
+      <div class="etxt">دوسي عشان تفتحيها</div>
+    </div>
+    <div class="letter hidden" id="letter"><span id="typed"></span><div class="sign" id="sign"></div></div>
+  </div>
+
+  <div class="pane hidden" id="p-flowers">
+    <div class="eyebrow">٢١ وردة · ٢١ سنة</div>
+    <h2>وردة لكل سنة</h2>
+    <div class="garden" id="garden"></div>
+    <div class="fmsg" id="fmsg"><div class="m hintt">دوسي على أي وردة</div></div>
+    <div class="prog"><i id="bar"></i></div>
+    <div class="pnum" id="pnum">٠ / ٢١</div>
+  </div>
+
+  <div class="pane hidden" id="p-cake">
+    <div class="eyebrow">أمنية</div>
+    <h2>اتمني وطفي الشمع</h2>
     <div class="cake" id="cake">
       <div class="candles"><div class="candle"><div class="flame"></div></div><div class="candle"><div class="flame"></div></div><div class="candle"><div class="flame"></div></div></div>
       <div class="tier t2"></div><div class="tier t1"></div><div class="plate"></div>
     </div>
     <p id="hint">دوسي على التورتة</p>
   </div>
-</section>
-
-<section id="s2" class="hidden">
-  <div class="wrap">
-    <div class="eyebrow">كلام من القلب</div>
-    <h2>حاجات لازم تعرفيها</h2>
-    <div class="rule"></div>
-    <div class="reader" id="reader" role="button" tabindex="0" aria-live="polite">
-      <div class="rnum" id="rnum"></div>
-      <div class="qtext" id="qtext"></div>
-      <div class="rhint" id="rhint">دوسي في أي حته للي بعده</div>
-    </div>
-    <div class="rctl">
-      <button class="rbtn" id="rprev" aria-label="السابق">&rarr;</button>
-      <div class="prog"><i id="bar"></i></div>
-      <button class="rbtn" id="rnext" aria-label="التالي">&larr;</button>
-    </div>
-    <button class="btn hidden" id="next1" style="margin-top:34px">كمّلي</button>
-  </div>
-</section>
-
-<section id="s3" class="hidden">
-  <div class="wrap">
-    <div class="eyebrow">رسالة</div>
-    <h2>من ميدو</h2>
-    <div class="rule"></div>
-    <div class="envelope" id="env" role="button" tabindex="0" aria-label="افتحي الرسالة"><div class="flap"></div><div class="body"></div><div class="seal">م</div><div class="etxt">رسالة ليكي. دوسي عشان تفتحيها</div></div>
-    <div class="letter hidden" id="letter"><span id="typed"></span><div class="sign" id="sign"></div></div>
-    <button class="btn hidden" id="next2" style="margin-top:36px">كمّلي</button>
-  </div>
-</section>
-
-<section id="s4" class="hidden">
-  <div class="wrap">
-    <div class="final-mark">٢١</div>
-    <div class="eyebrow" style="margin-top:6px">٢٣ فبراير</div>
-    <h2 style="margin-top:14px">كل سنة وانتي قلبي</h2>
-    <div class="rule"></div>
-    <p class="lead">واحد وعشرين سنة، وأنا لسه ممتن إني لقيتك.</p>
-    <button class="btn ghost" id="again" style="margin-top:28px">احتفلي تاني</button>
-  </div>
-</section>
-
-<footer>صُنع بحب بواسطة ميدو</footer>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
