@@ -81,10 +81,11 @@ h2{font-family:'Amiri',serif;font-size:clamp(1.7rem,5vw,2.4rem);font-weight:700;
 
 /* music dock */
 .dock{position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:170;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
-.dbtn{background:#231d38ee;border:1px solid var(--gold);color:var(--gold2);border-radius:999px;padding:10px 18px;font-size:.9rem;cursor:pointer;backdrop-filter:blur(8px);box-shadow:0 8px 22px #0007}
+.dbtn{background:#231d38ee;border:1px solid var(--gold);color:var(--gold2);border-radius:50%;width:42px;height:42px;font-size:1.1rem;opacity:.75;cursor:pointer;backdrop-filter:blur(8px);box-shadow:0 8px 22px #0007}
 .dplayer{position:relative;width:210px;height:118px;border-radius:12px;overflow:hidden;border:1px solid var(--line);box-shadow:0 10px 30px #000a;background:#000}
 .dplayer iframe{width:100%;height:100%;border:0}
 .dstop{position:absolute;top:2px;right:2px;width:26px;height:26px;border-radius:50%;background:#000a;border:0;color:#fff;font-size:1.1rem;line-height:1;cursor:pointer;z-index:2}
+.dbtn.on{opacity:1;background:var(--gold);color:#2a1f08}
 /* finale */
 .finale{padding:90px 0 60px;text-align:center}
 .final-mark{font-family:'Amiri',serif;font-size:7rem;line-height:1;background:linear-gradient(#f2dcaa,#d9b872);-webkit-background-clip:text;background-clip:text;color:transparent}
