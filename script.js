@@ -161,15 +161,20 @@ $('cake').onclick=()=>{
 };
 $('again').onclick=()=>{burst(260);sparks(26)};
 
-/* ---------- music: official YouTube embed, starts on tap ---------- */
+/* ---------- music: official YouTube embed, starts on her first tap ---------- */
 const SONG_ID='EgmXTmj62ic'; // Amr Diab - Tamally Maak (official, Mazzika)
-let playing=false;
+let playing=false;window.__yt={state:null};
 function startSong(){
+  if(playing)return;
   const f=document.createElement('iframe');
-  f.src='https://www.youtube-nocookie.com/embed/'+SONG_ID+'?autoplay=1&playsinline=1&rel=0&modestbranding=1';
-  f.allow='autoplay; encrypted-media; picture-in-picture';f.title='عمرو دياب - تملي معاك';f.loading='lazy';
-  $('dframe').replaceChildren(f);$('dplayer').classList.remove('hidden');$('dlab').textContent='تملي معاك';playing=true;
+  f.src='https://www.youtube-nocookie.com/embed/'+SONG_ID+'?autoplay=1&playsinline=1&rel=0&modestbranding=1&enablejsapi=1&origin='+encodeURIComponent(location.origin);
+  f.allow='autoplay; encrypted-media; picture-in-picture';f.title='عمرو دياب - تملي معاك';
+  f.onload=()=>{try{f.contentWindow.postMessage(JSON.stringify({event:'listening',id:1}),'*')}catch(e){}};
+  $('dframe').replaceChildren(f);$('dplayer').classList.remove('hidden');$('dbtn').classList.add('on');playing=true;
 }
-function stopSong(){$('dframe').replaceChildren();$('dplayer').classList.add('hidden');$('dlab').textContent='شغّلي أغنية';playing=false}
-$('dbtn').onclick=()=>{if(!playing)startSong()};
+function stopSong(){$('dframe').replaceChildren();$('dplayer').classList.add('hidden');$('dbtn').classList.remove('on');playing=false}
+addEventListener('message',e=>{if(typeof e.data!=='string'||e.origin.indexOf('youtube')<0)return;try{const d=JSON.parse(e.data);if(d.info&&typeof d.info.playerState==='number')window.__yt.state=d.info.playerState}catch(_){}});
+// first tap anywhere starts the song (browsers require a user gesture)
+addEventListener('pointerdown',function first(){removeEventListener('pointerdown',first);startSong()},{once:true});
+$('dbtn').onclick=e=>{e.stopPropagation();playing?stopSong():startSong()};
 $('dstop').onclick=stopSong;
