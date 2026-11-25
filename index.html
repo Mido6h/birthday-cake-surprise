@@ -5,91 +5,14 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>عيد ميلاد سعيد يا بيبا</title>
 <meta name="theme-color" content="#14111f">
+<meta name="description" content="عيد ميلاد سعيد يا بيبا">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#14111f;--bg2:#1d1830;--card:#231d38;--line:#ffffff1a;--gold:#d9b872;--gold2:#f2dcaa;--rose:#e7a4b6;--text:#f5efe6;--muted:#b9b0c9}
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html{scroll-behavior:smooth}
-body{font-family:'Tajawal',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;overflow-x:hidden;
- background-image:radial-gradient(900px 500px at 85% -10%,#3a2a5c55,transparent),radial-gradient(700px 500px at 0% 100%,#5c2a4a40,transparent)}
-.serif{font-family:'Amiri',serif}
-.wrap{max-width:760px;margin:0 auto;padding:0 22px}
-nav{position:fixed;top:0;inset-inline:0;z-index:30;display:flex;justify-content:space-between;align-items:center;padding:14px 26px;background:#14111fcc;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-nav .brand{font-family:'Amiri',serif;color:var(--gold2);font-size:1.15rem;letter-spacing:.5px}
-nav .date{font-size:.85rem;color:var(--muted)}
-section{padding:110px 0 70px;text-align:center;position:relative}
-.eyebrow{color:var(--gold);font-size:.85rem;letter-spacing:3px;margin-bottom:14px;font-weight:500}
-h1{font-family:'Amiri',serif;font-size:clamp(2.4rem,8vw,4rem);line-height:1.3;font-weight:700;color:var(--text)}
-h1 em{font-style:normal;color:var(--gold2)}
-h2{font-family:'Amiri',serif;font-size:clamp(1.7rem,5vw,2.4rem);font-weight:700;margin-bottom:10px}
-.lead{color:var(--muted);max-width:480px;margin:14px auto 0;font-size:1.05rem}
-.rule{width:64px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:22px auto}
-.btn{display:inline-block;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#2a1f08;border:0;border-radius:999px;padding:14px 36px;font:700 1rem 'Tajawal';cursor:pointer;box-shadow:0 10px 30px #d9b87240;transition:transform .2s,box-shadow .2s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px #d9b87260}
-.btn.ghost{background:transparent;color:var(--gold2);border:1px solid var(--gold);box-shadow:none}
-.hidden{display:none}
-.fade{animation:up .9s both}
-@keyframes up{from{opacity:0;transform:translateY(26px)}}
-/* hero */
-#s1{min-height:100vh;display:flex;align-items:center}
-.cake{position:relative;width:220px;height:200px;margin:36px auto 6px;cursor:pointer;filter:drop-shadow(0 20px 30px #0008)}
-.plate{position:absolute;bottom:0;left:-26px;right:-26px;height:14px;border-radius:50%;background:linear-gradient(#f2dcaa,#b99550)}
-.tier{position:absolute;left:50%;transform:translateX(-50%);border-radius:12px 12px 6px 6px;overflow:hidden}
-.t1{bottom:10px;width:220px;height:76px;background:linear-gradient(#e7a4b6,#c9728c)}
-.t2{bottom:86px;width:160px;height:62px;background:linear-gradient(#f3c3cf,#dd8fa4)}
-.tier:before{content:"";position:absolute;top:0;left:0;right:0;height:20px;background:#fbf4ea;border-radius:0 0 50% 50%/0 0 100% 100%}
-.candles{position:absolute;bottom:146px;left:50%;transform:translateX(-50%);display:flex;gap:24px}
-.candle{width:9px;height:40px;background:linear-gradient(90deg,#f2dcaa,#fff,#d9b872);border-radius:2px;position:relative}
-.flame{position:absolute;top:-22px;left:50%;width:12px;height:22px;margin-left:-6px;background:radial-gradient(#fff 15%,#ffd24a 45%,#ff8a00);border-radius:50% 50% 50% 50%/60% 60% 40% 40%;box-shadow:0 0 18px #ffb84a99;animation:fl .3s infinite alternate;transform-origin:bottom;transition:.5s}
-.out .flame{opacity:0;transform:scale(0)}
-@keyframes fl{to{transform:scale(1.12,.92) rotate(3deg)}}
-#hint{min-height:30px;color:var(--gold2);font-size:.95rem;margin-top:16px}
-/* reasons */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:34px}
-.env{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 18px;cursor:pointer;min-height:130px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;transition:.35s}
-.env:hover{border-color:var(--gold);transform:translateY(-3px)}
-.env .num{font-family:'Amiri',serif;font-size:2rem;color:var(--gold)}
-.env .tap{font-size:.8rem;color:var(--muted)}
-.env.open{background:linear-gradient(160deg,#2c2347,#231d38);border-color:var(--gold);cursor:default;transform:none}
-.env.open .txt{font-size:1.05rem;line-height:1.9}
-
-/* sky */
-.sky{position:relative;height:min(44vh,380px);margin:30px auto 0;max-width:640px;border:1px solid var(--line);border-radius:22px;background:radial-gradient(circle at 50% 40%,#2a2147,#171329 70%);overflow:hidden}
-.sky svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.sky svg polyline{fill:none;stroke:var(--gold);stroke-width:.35;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:400;stroke-dashoffset:400;opacity:.8}
-.sky.done svg polyline{animation:draw 3.2s ease forwards}
-@keyframes draw{to{stroke-dashoffset:0}}
-.star{position:absolute;width:40px;height:40px;margin:-20px 0 0 -20px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;padding:0}
-.star:before{content:"";width:7px;height:7px;border-radius:50%;background:#cfc6e6;opacity:.55;box-shadow:0 0 6px #cfc6e688;transition:.5s;animation:tw 3s ease-in-out infinite}
-.star:nth-child(3n):before{animation-delay:.8s}.star:nth-child(3n+1):before{animation-delay:1.6s}
-@keyframes tw{50%{opacity:.95;transform:scale(1.35)}}
-.star:hover:before{background:#fff;opacity:1}
-.star.lit:before{width:13px;height:13px;background:var(--gold2);opacity:1;box-shadow:0 0 18px 6px #f2dcaaaa,0 0 40px 12px #d9b87266;animation:none}
-.star.cur:before{width:17px;height:17px}
-.msgbox{max-width:620px;margin:26px auto 0;min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
-.msgbox .n{font-family:'Amiri',serif;color:var(--gold);font-size:1.05rem}
-.msgbox .m{font-family:'Amiri',serif;font-size:clamp(1.3rem,4.6vw,1.75rem);line-height:2;color:var(--text);animation:up .7s both}
-.msgbox .m.hintt{font-family:'Tajawal';font-size:1rem;color:var(--muted)}
-.prog{height:3px;background:var(--line);border-radius:3px;max-width:240px;margin:18px auto 0;overflow:hidden}
-.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .6s}
-.pnum{color:var(--muted);font-size:.85rem;margin-top:8px}
-/* letter */
-.letter{background:#fbf4ea;color:#33283f;max-width:620px;margin:34px auto 0;border-radius:6px;padding:46px 34px 40px;text-align:right;line-height:2.15;box-shadow:0 30px 60px #0007;position:relative;font-family:'Amiri',serif;font-size:1.28rem;min-height:260px;border-top:4px solid var(--gold);white-space:pre-line}
-.letter:before{content:"”";position:absolute;top:-6px;right:20px;font-size:6rem;color:var(--gold);opacity:.4;font-family:'Amiri',serif}
-.sign{margin-top:18px;font-weight:700;color:#9c6a2f;font-size:1.3rem}
-/* finale */
-.final-mark{font-size:7rem!important;background:linear-gradient(#f2dcaa,#d9b872);-webkit-background-clip:text;background-clip:text;color:transparent;font-family:'Amiri',serif;font-size:5rem;color:var(--gold2);line-height:1}
-footer{padding:36px 0 60px;text-align:center;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
-canvas#c{position:fixed;inset:0;pointer-events:none;z-index:50}
-.float{position:fixed;bottom:-30px;font-size:1.3rem;animation:rise linear forwards;pointer-events:none;z-index:40;color:var(--gold2)}
-@keyframes rise{to{transform:translateY(-110vh) rotate(30deg);opacity:0}}
-@media(max-width:480px){.letter{padding:34px 22px;font-size:1.15rem}nav{padding:12px 16px}}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<canvas id="c"></canvas>
+<div id="curtain" aria-label="ستارة"><div class="cp cl"></div><div class="cp cr"></div><div class="cmid"><div class="eyebrow">إلى بيبا</div><div class="cnum">٢١</div><button class="btn" id="open">افتحي الستارة</button></div></div>
 <nav><div class="brand">بيبا</div><div class="date">٢٣ فبراير</div></nav>
 
 <section id="s1">
@@ -108,14 +31,19 @@ canvas#c{position:fixed;inset:0;pointer-events:none;z-index:50}
 
 <section id="s2" class="hidden">
   <div class="wrap">
-    <div class="eyebrow">٢١ سنة · ٢١ نجمة</div>
-    <h2>كل نجمة سنة من عمرك</h2>
+    <div class="eyebrow">كلام من القلب</div>
+    <h2>حاجات لازم تعرفيها</h2>
     <div class="rule"></div>
-    <p class="lead">كل نجمة فيها حاجة عايز أقولهالك. نوّريهم واحدة واحدة.</p>
-    <div class="sky" id="sky"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><polyline id="lines" points=""/></svg></div>
-    <div class="msgbox" id="msgbox" aria-live="polite"><div class="m hintt">دوسي على أي نجمة</div></div>
-    <div class="prog"><i id="bar"></i></div>
-    <div class="pnum" id="pnum">٠ / ٢١</div>
+    <div class="reader" id="reader" role="button" tabindex="0" aria-live="polite">
+      <div class="rnum" id="rnum"></div>
+      <div class="qtext" id="qtext"></div>
+      <div class="rhint" id="rhint">دوسي في أي حته للي بعده</div>
+    </div>
+    <div class="rctl">
+      <button class="rbtn" id="rprev" aria-label="السابق">&rarr;</button>
+      <div class="prog"><i id="bar"></i></div>
+      <button class="rbtn" id="rnext" aria-label="التالي">&larr;</button>
+    </div>
     <button class="btn hidden" id="next1" style="margin-top:34px">كمّلي</button>
   </div>
 </section>
@@ -125,7 +53,8 @@ canvas#c{position:fixed;inset:0;pointer-events:none;z-index:50}
     <div class="eyebrow">رسالة</div>
     <h2>من ميدو</h2>
     <div class="rule"></div>
-    <div class="letter"><span id="typed"></span><div class="sign" id="sign"></div></div>
+    <div class="envelope" id="env" role="button" tabindex="0" aria-label="افتحي الرسالة"><div class="flap"></div><div class="body"></div><div class="seal">م</div><div class="etxt">رسالة ليكي. دوسي عشان تفتحيها</div></div>
+    <div class="letter hidden" id="letter"><span id="typed"></span><div class="sign" id="sign"></div></div>
     <button class="btn hidden" id="next2" style="margin-top:36px">كمّلي</button>
   </div>
 </section>
@@ -143,56 +72,8 @@ canvas#c{position:fixed;inset:0;pointer-events:none;z-index:50}
 
 <footer>صُنع بحب بواسطة ميدو</footer>
 
-<script>
-// ===== عدّلي النصوص هنا =====
-const STARS=[
- "أنا مش بحبك عشان إنتي مثالية. بحبك عشان إنتي إنتي، بكل حاجة فيكي.",
- "في أيام بقفل فيها على الدنيا كلها، وإنتي الوحيدة اللي بفتحلها.",
- "صوتك بيهدّيني أكتر من أي حاجة جربتها في حياتي.",
- "لما بتضحكي من قلبك، بنسى كل اللي كان مضايقني قبلها.",
- "بتخليني عايز أبقى أحسن من نفسي، من غير ما تطلبي مني حاجة.",
- "حتى لما بتزعلي مني، بفتكر قد إيه أنا فارق معاكي.",
- "معاكي مبحتاجش أمثّل. بقعد على طبيعتي وأنا مطمّن.",
- "ناس كتير بتعدي في حياتنا. إنتي الوحيدة اللي غيّرتيني.",
- "أكتر حاجة بخاف عليها في الدنيا دي هي ضحكتك.",
- "بتفهميني من نظرة، وساعات من سكوتي.",
- "لما الدنيا بتضيق عليا، بفكر فيكي فبتوسع.",
- "مبقولهاش كتير، بس وجودك في حياتي نعمة أنا واعي بيها كل يوم.",
- "بحب إنك حقيقية. بتفرحي بجد، وبتزعلي بجد، وبتحبي بجد.",
- "أي خطة بعملها للمستقبل، بلاقيكي فيها من غير ما أقصد.",
- "إداني أمان أنا ماكنتش عارف إني محتاجه أوي.",
- "من يوم ما دخلتي حياتي، ما حسيتش إني لوحدي تاني.",
- "لو رجعت بيا الأيام وأختار من الأول، هختارك بنفس الاختيار.",
- "إنتي أحلى حاجة حصلت لي، وكل يوم بقول الحمد لله عليها.",
- "٢١ سنة من عمرك، وأنا مش مصدق إني لحقت أكون جزء منهم.",
- "كبرتي سنة، وأنا لسه بتعلم منك يعني إيه الواحد يحب بجد.",
- "ووعد مني: هفضل أختارك كل يوم، مش بس يوم ٢٣ فبراير."
-];
-const LETTER="بيبا،\n\nأنا مش بعرف أقولك الكلام ده وشي في وشك من غير ما أتلخبط، فكتبته.\n\nالسنة دي بتكملي ٢١، وأنا واقف أبص على اللي حصل بينا وأتعجب. إزاي واحدة تدخل حياتي بالهدوء ده وتبقى أهم حاجة فيها من غير ما أحس؟\n\nإنتي مش بس حد بحبه. إنتي المكان اللي برتاح فيه لما أتعب، والصوت اللي بسمعه في دماغي لما أتوه، والسبب إني بحاول كل يوم أبقى أحسن.\n\nمش هوعدك إننا مش هنتخانق، ولا إني مش هغلط. بس بوعدك إني مش هسيبك لوحدك فيها، وإني هفضل أختارك حتى في الأيام اللي مبتبقاش سهلة.\n\nكل سنة وانتي طيبة يا أغلى حاجة عندي. ربنا يحفظك ليا، ويفرّحك زي ما بتفرّحيني.";
-const SIGN="ميدو";
-// =============================
-const $=id=>document.getElementById(id);
-const cv=$('c'),cx=cv.getContext('2d');let parts=[];
-const COLORS=['#d9b872','#f2dcaa','#e7a4b6','#ffffff','#b79ad6'];
-function rs(){cv.width=innerWidth;cv.height=innerHeight}rs();addEventListener('resize',rs);
-function confetti(n=140){for(let i=0;i<n;i++)parts.push({x:innerWidth/2,y:innerHeight/2,vx:(Math.random()-.5)*15,vy:Math.random()*-15-2,g:.33,s:Math.random()*7+4,c:COLORS[i%COLORS.length],r:Math.random()*6})}
-(function loop(){cx.clearRect(0,0,cv.width,cv.height);parts=parts.filter(p=>p.y<cv.height+20);parts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=p.g;p.r+=.2;cx.fillStyle=p.c;cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillRect(-p.s/2,-p.s/4,p.s,p.s/2);cx.restore()});requestAnimationFrame(loop)})();
-function sparks(n=16){const e=['✦','✧','♡','✦'];for(let i=0;i<n;i++){const d=document.createElement('div');d.className='float';d.textContent=e[i%e.length];d.style.left=Math.random()*95+'vw';d.style.animationDuration=(4+Math.random()*4)+'s';d.style.animationDelay=Math.random()*2+'s';document.body.appendChild(d);setTimeout(()=>d.remove(),9000)}}
-function show(id){const s=$(id);s.classList.remove('hidden');s.classList.add('fade');setTimeout(()=>s.scrollIntoView({behavior:'smooth'}),50)}
-let blown=false;
-$('cake').onclick=()=>{if(blown)return;blown=true;$('cake').classList.add('out');$('hint').textContent='يارب تتحقق، وأنا هعمل كل اللي أقدر عليه عشان تتحقق';confetti(200);sparks();setTimeout(()=>show('s2'),1400)};
-const AR=n=>String(n).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]);
-const sky=$('sky'),box=$('msgbox');const pos=[];let lit=0;
-STARS.forEach((t,i)=>{const a=i*2.399963,r=Math.sqrt((i+.6)/STARS.length);const x=50+Math.cos(a)*r*42,y=50+Math.sin(a)*r*40;pos.push([x,y]);
- const b=document.createElement('button');b.className='star';b.setAttribute('aria-label','نجمة '+AR(i+1));b.style.left=x+'%';b.style.top=y+'%';
- b.onclick=()=>{const first=!b.classList.contains('lit');sky.querySelectorAll('.cur').forEach(e=>e.classList.remove('cur'));b.classList.add('lit','cur');
-  box.innerHTML='<div class="n">'+AR(i+1)+'</div><div class="m"></div>';box.querySelector('.m').textContent=t;box.scrollIntoView({behavior:'smooth',block:'center'});
-  if(first){lit++;confetti(14);$('bar').style.width=lit/STARS.length*100+'%';$('pnum').textContent=AR(lit)+' / '+AR(STARS.length);
-   if(lit===STARS.length){const order=pos.map((p,k)=>[p,k]).sort((u,v)=>u[1]-v[1]).map(u=>u[0]);$('lines').setAttribute('points',order.map(p=>p.join(',')).join(' '));sky.classList.add('done');confetti(160);setTimeout(()=>$('next1').classList.remove('hidden'),1800)}}};
- sky.appendChild(b)});
-$('next1').onclick=()=>{show('s3');let i=0;const t=setInterval(()=>{$('typed').textContent=LETTER.slice(0,++i);if(i>=LETTER.length){clearInterval(t);$('sign').textContent=SIGN;$('next2').classList.remove('hidden')}},35)};
-$('next2').onclick=()=>{show('s4');confetti(260);sparks(26)};
-$('again').onclick=()=>{confetti(260);sparks(26)};
-</script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
